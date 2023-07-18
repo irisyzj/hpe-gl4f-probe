@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Hewlett Packard Enterprise" /><link rel="canonical" href="https://irisyzj.github.io/hpe-gl4f-probe.github.io/manual/index.html" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <meta property="og:title" content="HPE GreenLake for File Storage Data Reduction Estimation Probe"/>
+    <meta property="og:description" content="The HPE GreenLake for File Storage Data Reduction Estimation Probe provides estimated data reduction rate achieable based on an example data set."/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:url" content="https://irisyzj.github.io/hpe-gl4f-probe.github.io"/>
+    <meta property="og:type" content="website"/>
+    
+    <title>Manual Deployment - HPE GreenLake for File Storage Data Reduction Estimation Probe</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../css/hpedev.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Manual Deployment";
+        var mkdocs_page_input_path = "manual/index.md";
+        var mkdocs_page_url = "/hpe-gl4f-probe.github.io/manual/index.html";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> HPE GreenLake for File Storage Data Reduction Estimation Probe
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">GET STARTED</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../prerequisites/index.html">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deployment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../output/index.html">Understanding Output</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/index.html">Troubleshooting</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="index.html">Manual Deployment</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#manual_execution_procedure">Manual Execution Procedure</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#download_the_bundle">Download the bundle</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configure_the_run">Configure the run</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#launch_the_probe_run">Launch the probe run</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#probe_stages">Probe Stages</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#treewalk_phase">Treewalk Phase</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#db_initialization_phase">DB Initialization Phase</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#datascan_phase">DataScan Phase</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#monitoring_progress">Monitoring progress</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#understanding_the_ouput">Understanding the ouput</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#low_level_output">Low Level Output</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#probe_analyze">Probe Analyze</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#io_behavior">I/O Behavior</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">LEGAL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../legal/eula/index.html">End User License Agreement</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../legal/notices/index.html">Notices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../legal/support/index.html">Support</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">HPE GreenLake for File Storage Data Reduction Estimation Probe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+          <li>GET STARTED &raquo;</li>
+      <li>Manual Deployment</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/irisyzj/hpe-gl4f-probe.github.io/edit/master/docs/manual/index.md">Edit on irisyzj/hpe-gl4f-probe.github.io</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="manual_execution_overview">Manual Execution Overview<a class="headerlink" href="#manual_execution_overview" title="Permanent link">&para;</a></h1>
+<p>The HPE GreenLake for File Storage Data Reduction Estimation Probe is a long running process in a docker container. The docker container needs to run on a linux system that has read only access to the files you want to examine for data reduction as well as reasonable memory and substantial fast local disk.</p>
+<p>When having issues with the probe_launcher.py script or you need more experimental features, you should use this page.</p>
+<div class="toc">
+<ul>
+<li><a href="#manual_execution_overview">Manual Execution Overview</a><ul>
+<li><a href="#manual_execution_procedure">Manual Execution Procedure</a><ul>
+<li><a href="#download_the_bundle">Download the bundle</a></li>
+<li><a href="#configure_the_run">Configure the run</a></li>
+<li><a href="#launch_the_probe_run">Launch the probe run</a></li>
+</ul>
+</li>
+<li><a href="#probe_stages">Probe Stages</a><ul>
+<li><a href="#treewalk_phase">Treewalk Phase</a></li>
+<li><a href="#db_initialization_phase">DB Initialization Phase</a></li>
+<li><a href="#datascan_phase">DataScan Phase</a></li>
+</ul>
+</li>
+<li><a href="#monitoring_progress">Monitoring progress</a></li>
+<li><a href="#understanding_the_ouput">Understanding the ouput</a><ul>
+<li><a href="#low_level_output">Low Level Output</a></li>
+</ul>
+</li>
+<li><a href="#probe_analyze">Probe Analyze</a></li>
+<li><a href="#io_behavior">I/O Behavior</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="manual_execution_procedure">Manual Execution Procedure<a class="headerlink" href="#manual_execution_procedure" title="Permanent link">&para;</a></h2>
+<p>Follow the steps in <a href="../prerequisites/index.html">Prerequisites</a> to verify requirements are met to properly run the probe.  Get docker container image via links in <a href="../deployment/index.html">Deployment</a>.</p>
+<p>When the probe docker container is launched you'll then be able to connect into it and then run the probe itself with key configuration information. The probe will then run until completion and report results. </p>
+<h3 id="download_the_bundle">Download the bundle<a class="headerlink" href="#download_the_bundle" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Download the docker image
+    Follow the download links in <a href="../deployment/index.html">Deployment</a> to download the bundle.
+    Then set the variable for the build number:</p>
+<p><code>export PROBE_BUILD=[PROBE BUILD NUMBER]</code></p>
+</li>
+<li>
+<p>Untar the bundle:</p>
+<p><code>tar -xzf ${PROBE_BUILD}.probe.bundle.tar.gz</code></p>
+</li>
+<li>
+<p>Load the docker image:</p>
+<p><code>docker load -i ${PROBE_BUILD}.probe.image.gz</code></p>
+<p>This step will take a few minutes without meaningful output.</p>
+</li>
+</ol>
+<p>Tag the loaded image by doing a docker images and noting the new image, and it's ID.  Recall that images are identified by unique image IDs and human readable tags. Tag it as shown below - get the ID from the docker images output, and the value of the name is by convention the probe build.</p>
+<p> <pre><code class=bash>docker images
+</code></pre></p>
+<p>Notice the Image IDs in the output list</p>
+<p> <pre><code class=bash>docker tag &lt;hex image tag value from output&gt; vast-probe-${PROBE_BUILD}
+</code></pre></p>
+<h3 id="configure_the_run">Configure the run<a class="headerlink" href="#configure_the_run" title="Permanent link">&para;</a></h3>
+<p>Launch a 'screen' session (or tmux). We recommend some kind of long lived session tool since the probe can take a very long time to run and we do not want it to terminate if there is an issue with the client system.</p>
+<p> <pre><code class=bash>screen -R probe
+</code></pre></p>
+<p>Run the container while mapping the required directories 
+run with the image tag/name you set earlier. The <code>-v</code> specifies mounts from the real operating system that should be made available to docker. These are directories that the probe can use and scan. Include as many <code>-v</code>'s as needed, just ensuring that at least one is the actual probe scratch directory (<code>/mnt/probe</code> in this case).</p>
+<p> <pre><code class=bash>docker run -v /mnt/fileserver1:/mnt/fileserver1 -v /mnt/probe:/mnt/probe -it vast-probe-${PROBE_BUILD}
+from within the docker container, Create relevant output directories, eg:
+sudo mkdir -p /mnt/probe/vast-probe/output
+sudo mkdir -p /mnt/probe/vast-probe/db
+sudo chmod -R 777 /mnt/probe/vast-probe
+#note: If you get permission denied then disable selinux on your host
+Edit probe config file:
+vim /vast/install/probe/sim_init_file.yml
+</code></pre></p>
+<p>See example config below, but also some items to note:</p>
+<ul>
+<li><code>input_dir</code>:  you can specify more than one. Just prefix a newline with '-'.  This will allow the probe to scan multiple mountpoints/filesystems. Each input directory is scanned in a parallel thread which can slightly improve probe scan times.</li>
+<li><code>output_dir</code> : this is where the summary files and some stats files will go. this is relatively small (&lt; GB, although could get larger if you are scanning a lot of paths)</li>
+<li><code>metadata_dir</code> : if using disk based indexes the space here needs to be pretty large (1% of total dataset to be very safe).</li>
+<li><code>match_disable</code>: if you set to '1' , it will do 'local-only' compression/dedup.  This completes much more quickly, but will not do any similarity hashing.</li>
+<li><code>max_number_of_files</code>: This effectively pre-allocates some RAM to hold for file pointers.  Set this value to somewhat higher than the total number of files you expect the probe to scan.  Every 1-million files takes up 50MB of RAM.  1-billion is 50GB.  Make sure not to set a value that causes the file pointer cache to exceed 50% of system RAM.</li>
+<li><code>disk_size_gb</code>: set this to use disk based index.  If you set to 0 it will instead use a RAM based index (see next variable) Index is ~80% of the probe metadata so rule of the thumb here so if you have a dedicated SSD-based file system for probe md the rule of thumb is to put here 80% of the disk size. And remember the free disk space size needs to be 0.6% of the total dataset size (this has a safety margin).</li>
+<li><code>ram_size_gb</code>: if disk index is not used the probe will use RAM for indexing. This is faster but may produce inaccurate results for large data sets. If this value is left unset the probe will use 80% of the available system memory.</li>
+<li><code>IOPS_limit</code>: can be used to limit the read rate from the target system. The IO size is the chunk size (default 32K), e.g. IOPS_limit: 1000 → ~320 MB/sec. </li>
+</ul>
+<p><strong> Example config</strong>:</p>
+<p> <pre><code class=bash>input_dir:
+  - '/mnt/fileserver/data/stuff'
+filter: '*'
+output_dir: '/mnt/probe/vast-probe/output' # dir for log files
+metdata_dir: '/mnt/probe/vast-probe/db' # dir for probe metadata
+
+regexp_filter: '' # files/directories matching the filter will NOT be scanned by the probe
+
+send_from: 'andy@vastdata.com'
+send_to:
+ - 'andy@vastdata.com'
+ - 'probe.callhome@vastdata.com'
+
+remote_monitoring_freq: 100 # sending mail with stats line, every remote_monitoring_freq seconds
+SMTP_host: 'localhost' # put an SMTP relay here
+
+remove_db_dir: 0 #remove db dir after each run? 1 for yes, 0 for no
+ignore_links: 1 #1 for yes, 0 for no
+
+IOPS_limit: 0 #for no limit, put 0
+number_of_threads: 0 # for one thread per core, put 0
+printing_frequency: 1 # in seconds
+open_files_limit: 0 #for no limit, put 0
+obfuscate_files_names: 0 #1 for yes, 0 for no
+match_disable: 0 #1 to disable matches, 0 to enable
+ram_size_gb: 0 # RAM for indexes (in GB), 0 will make the probe us ~80% of the available system memory
+disk_size_gb: 100 # if set will use disk to store the similarity index.
+
+pause: #'7:15' #hh:mm or leave blank
+resume: #'17:16' #hh:mm or leave blank
+
+split:
+...
+</code></pre></p>
+<p>Once you are satisfied, copy the .yml file to somewhere outside of the container (NFS mount or via SCP), since it will not survive container restart</p>
+<p> <pre><code class=bash>cp /vast/install/probe/sim_init_file.yml /mnt/probe/
+</code></pre></p>
+<h3 id="launch_the_probe_run">Launch the probe run<a class="headerlink" href="#launch_the_probe_run" title="Permanent link">&para;</a></h3>
+<p>While still connected to the probe's docker container, go to the probe's home directory.
+Note: if you need to run the probe a second time you can copy the save <code>sim_init_file.yml</code> file from <code>/mnt/probe</code> into the container at <code>/vast/install/probe</code>. </p>
+<p> <pre><code class=bash>cd /vast/install/probe
+</code></pre></p>
+<p>Run it:
+sudo is required if root is needed in order to access one of the directories configured in the init file. </p>
+<p> <pre><code class=bash>sudo python3 ./probe.py
+</code></pre></p>
+<h2 id="probe_stages">Probe Stages<a class="headerlink" href="#probe_stages" title="Permanent link">&para;</a></h2>
+<p>Some of these stages run concurrently (eg: Treewalk can run in the background throughout)</p>
+<h3 id="treewalk_phase">Treewalk Phase<a class="headerlink" href="#treewalk_phase" title="Permanent link">&para;</a></h3>
+<p>When the probe is first kicked off, it  builds a list of all files, along with the size-in-bytes for each file.  This process has recently been parallelized to try and use more threads to perform this treeewalk, however depending on the source filesystem, this may still take a significant amount of time.   Note that this runs in the background, such that the probe can make progress with other stages even while the treewalk phase is active.</p>
+<p>As an alternative, you can specify the <code>--csv</code> option to point to a CSV file which looks like this:</p>
+<p> <pre><code class=bash>/path/to/file.file,1234
+</code></pre></p>
+<p>where 1234 = sizeInBytes</p>
+<h3 id="db_initialization_phase">DB Initialization Phase<a class="headerlink" href="#db_initialization_phase" title="Permanent link">&para;</a></h3>
+<p>The probe needs to initialize the Dictionary/Database which is used for storing matches.  Depending on the speed of the storage which is hosting the database (specified via 'metadata_dir' ) , this can take some time.  Also note that the 'disk_size_gb' parameter is directly related to how large the DB will be.  During this phase, the probe will pre-allocate the DB by writing XX-GB to the metadata_dir.  </p>
+<h3 id="datascan_phase">DataScan Phase<a class="headerlink" href="#datascan_phase" title="Permanent link">&para;</a></h3>
+<p>Once initialization has occurred, this is when the actual probe-scanning happens.  During this time, multiple threads are walking through the generated list of files and reading them to generate the various hashes which are then inserted into the DB.  You can monitor progress during this phase as described below.</p>
+<h2 id="monitoring_progress">Monitoring progress<a class="headerlink" href="#monitoring_progress" title="Permanent link">&para;</a></h2>
+<p>While the probe is running, there are 2 ways to get progress:</p>
+<ul>
+<li>Watch the screen</li>
+</ul>
+<p> <pre><code class=bash>sudo python3 ./probe.py
+mail sending off
+Scanning input directories, this might take a while...
+Scanned 144932 files, size 3.2TB
+File scan completed
+open file limit is 65536, it is recommended to allow as many open files as possible
+Initializing probe.
+336.386 GB/3.1718 TB (10.4%)     process_rate = 850.45 MB/sec   factor = 1.54
+</code></pre></p>
+<ul>
+<li>Check the log file</li>
+</ul>
+<p> <pre><code class=bash>tail -f /mnt/probe/vast-probe/output/probe_Mon_Jan_21_11_57_52_2019.log
+</code></pre></p>
+<p>The log will give you information like this:</p>
+<p> <pre><code class=text>n_chunks = 482991, n_matched_chunks = 392628, dedups = 918, match_percent = 81.291% , sum_of_gain = 403245081, gain = 64.877, avg_gain_per_match = 1027.04, avg_match_hashes_per_match = 9.28467, decompressed_sum = 1.212 GB, compressed_sum = 204.86 MB, factor = 6.05886, ratio = 0.165048, sum_of_self_compress = 592.76 MB size_of_data_processed = 1.212 GB/1.324 GB 91.5786% number_of_inaccessible_files = 0/517401 size_of_inaccessible = 0 B/1.324 GB READ = 1.212 GB, RE-READ = 940.70 MB, Total READ = 2.131 GB process_rate = 34.33 MB/sec
+</code></pre></p>
+<h2 id="understanding_the_ouput">Understanding the ouput<a class="headerlink" href="#understanding_the_ouput" title="Permanent link">&para;</a></h2>
+<p>The summary probe output is described in Un<a href="../output/index.html">derstanding Output</a></p>
+<h3 id="low_level_output">Low Level Output<a class="headerlink" href="#low_level_output" title="Permanent link">&para;</a></h3>
+<p>In addition to the previous output, the probe will also output lower level information periodically. These days that information is not typically useful, but here is an explanation just in case.</p>
+<ul>
+<li><code>n_chunks</code> - amount of chunks processed by the probe (default size is 32K)</li>
+<li><code>avg_chunk_size</code> - average chunk size</li>
+<li><code>n_matched_chunks</code> - amount of chunks identified as similar to pre existing chunks by similarity search </li>
+<li><code>match_percent</code> - percentage of chunks identified as similar to pre existing chunks by similarity search </li>
+<li><code>sum_of_gain</code> - total space saved by similarity compression</li>
+<li><code>gain</code> - percentage of space saved by similarity compression</li>
+<li><code>avg_gain_per_match</code> - average amount of space saved per chunk from similarity compression</li>
+<li><code>avg_match_hashes_per_match</code> - average amount of matching hashes found during similarity seach</li>
+<li><code>n_duplicate_chunks</code> - amount of identical chunks found</li>
+<li><code>dedup_percent</code> - percentage of identical chunks found</li>
+<li><code>original_size</code> - amount of data processed by the probe</li>
+<li><code>compressed_sum</code> - estimated size of data post compression, dedup and similarity compression</li>
+<li><code>factor</code> - compression factor (original_size / compressed_sum)</li>
+<li><code>ratio</code> - 1 / factor</li>
+<li><code>sum_of_self_compress</code> - data size if only local compression (with the given chunk size) was applied</li>
+<li><code>size_of_data_processed</code> - progress indication </li>
+<li><code>number_of_inaccessible_files</code> - number of files that were found in the initial scan but the probe didn't manage to read from when trying to process them</li>
+<li><code>size_of_inaccessible</code> - amount of data that were found in the initial scan but the probe didn't manage to read from when trying to process them</li>
+<li><code>READ</code> - amount of scanned data </li>
+<li><code>RE-READ</code> - amount of data that was re-read in order to perform global compression</li>
+<li><code>Total READ</code> - READ + RE-READ</li>
+</ul>
+<p>I thought it would be helpful to share results from a test run and an interpretation of those results for the benefit of others:</p>
+<p>Here’s the last line of output with a summary:</p>
+<p> <pre><code class=text>n_chunks = 1120059762, avg_chunk_size = 32754.2, n_matched_chunks = 507860164, match_percent = 45.3422% , sum_of_gain = 99.367 GB, gain = 0.603369, avg_gain_per_match = 210.087, avg_match_hashes_per_match = 3.4, n_duplicate_chunks = 529286922, dedup_percent=47.2552, original_size = 33.3664 TB, compressed_sum = 2.7112 TB, factor = 12.3069, ratio = 0.0812552, sum_of_self_compress = 16.0828 TB, size_of_data_processed = 33.3664 TB/33.7412 TB 98.8889%, number_of_inaccessible_files = 17233/880015, size_of_inaccessible = 384.025 GB/33.7412 TB, READ = 33.3664 TB, RE-READ = 15.1350 TB, Total READ = 48.5014 TB
+</code></pre></p>
+<p>And the definitions that I think are most pertinent:
+* <code>match_percent</code> - percentage of chunks identified as similar to pre existing chunks by similarity search 
+* <code>sum_of_gain</code> - total space saved by similarity compression
+* <code>gain</code> - percentage of space saved by similarity compression
+* <code>dedup_percent</code> - percentage of identical chunks found
+* <code>original_size</code> - amount of data processed by the probe
+* <code>compressed_sum</code> - estimated size of data post compression, dedup and similarity compression
+* <code>factor</code> - compression factor (original_size / compressed_sum)
+* <code>sum_of_self_compress</code> - data size if only local compression (with the given chunk size) was applied
+* <code>size_of_data_processed</code> - progress indication </p>
+<p>This means the probe processed 33TB of data. The “native” compressed size would have been 16TB
+the actual compressed size including compression, dedup, and similarity compression was 2.7TB, thus the total factor of savings was 12 (33/2.7).</p>
+<p>Digging a little deeper we see that the majority of the savings came from dedup (47% of the chunks were identical) and compression as it looks like similarity compression saved 0.6% for a total of 99GB.</p>
+<h2 id="probe_analyze">Probe Analyze<a class="headerlink" href="#probe_analyze" title="Permanent link">&para;</a></h2>
+<p>After the probe completes a run it will automatically analyze its own output from the log files and generate an analysis log (still quite long) with a breakdown by directory and file extension of the data reduction achieved.</p>
+<p>In rare cases you may need to run this manually, here's how:</p>
+<p> <pre><code class=bash>cd /vast/install/probe
+python3 ./probe.py --analyze_log &lt;probe log file&gt;
+.... output about processing files ....
+Processed 1967860 files             
+Writing probe run analysis to ..../probe_Date.log.analysis
+</code></pre></p>
+<h2 id="io_behavior">I/O Behavior<a class="headerlink" href="#io_behavior" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><strong>Speed</strong>: From a scan-speed perspective, what we've found is that on average we see approximately ~60 MByte/sec per physical CPU core when running the probe in full "similarity hash" mode (default value for <code>match_disable</code>).  Thus, a 20-core system would net approximately 1.2 GByte/sec. Having that said performance is also highly dependant on the disk latency of the target system being scanned and is often delayed by doing random reads on that system. </p>
+</li>
+<li>
+<p><strong>Read amplification</strong>: The way our similarity hasher works, if it discovers any matches, it will need to re-read a portion of the dataset again to look for additional opportunities for dataReduction.  In the case where your data has a lot of similarity, this can result in significant read-amplification.  Therefore, when determining the amount of time it will take to scan a file-system, it is necessary to allow the probe to run for a period of time to determine the approximate 'Re-Read' ratio.</p>
+<ul>
+<li>look at the <code>/mnt/probe/db/*.stats</code> output to see.</li>
+</ul>
+</li>
+<li>
+<p><strong>match_disable=1</strong>: If you choose this setting (non-default), the probe will bypass similarity hashing, and instead only look for local compression opportunity, and full-chunk matches (for dedup).  This is much less CPU intensive, and we've found that the bottleneck will typically be either networking or the filesystem which it is scanning, up to a point.  In my testing on a system with 25gigE, using this mode saw an average of 1.3GByte/sec (about 66MB/sec/physCore).  At times the network throughput got close to line-rate (2+GByte/sec).</p>
+<ul>
+<li>If you have a subset of data which is representative of a larger set: it would be advisable to run against the smaller set in this mode first, to determine the local compression &amp; dedup rates.  Once that rate is established, running the probe again in similarity-hash mode against the full dataset is recommended.</li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div>
+
+<footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../faq/index.html" class="btn btn-neutral float-right" title="FAQ">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../troubleshooting/index.html" class="btn btn-neutral" title="Troubleshooting"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright 2023 Hewlett Packard Enterprise Development LP</p>
+    
+  </div>
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../troubleshooting/index.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../faq/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

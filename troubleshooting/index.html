@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Hewlett Packard Enterprise" /><link rel="canonical" href="https://irisyzj.github.io/hpe-gl4f-probe.github.io/troubleshooting/index.html" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <meta property="og:title" content="HPE GreenLake for File Storage Data Reduction Estimation Probe"/>
+    <meta property="og:description" content="The HPE GreenLake for File Storage Data Reduction Estimation Probe provides estimated data reduction rate achieable based on an example data set."/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:url" content="https://irisyzj.github.io/hpe-gl4f-probe.github.io"/>
+    <meta property="og:type" content="website"/>
+    
+    <title>Troubleshooting - HPE GreenLake for File Storage Data Reduction Estimation Probe</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../css/hpedev.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Troubleshooting";
+        var mkdocs_page_input_path = "troubleshooting/index.md";
+        var mkdocs_page_url = "/hpe-gl4f-probe.github.io/troubleshooting/index.html";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> HPE GreenLake for File Storage Data Reduction Estimation Probe
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">GET STARTED</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../prerequisites/index.html">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deployment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../output/index.html">Understanding Output</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="index.html">Troubleshooting</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#launcher_hang">Launcher Hang</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cpu_compatibility">CPU Compatibility</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cgroup_error">CGroup Error</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#privilege_error">Privilege Error</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#illegal_instruction">Illegal Instruction</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../manual/index.html">Manual Deployment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">LEGAL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../legal/eula/index.html">End User License Agreement</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../legal/notices/index.html">Notices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../legal/support/index.html">Support</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">HPE GreenLake for File Storage Data Reduction Estimation Probe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+          <li>GET STARTED &raquo;</li>
+      <li>Troubleshooting</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/irisyzj/hpe-gl4f-probe.github.io/edit/master/docs/troubleshooting/index.md">Edit on irisyzj/hpe-gl4f-probe.github.io</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="troubleshooting_overview">Troubleshooting Overview<a class="headerlink" href="#troubleshooting_overview" title="Permanent link">&para;</a></h1>
+<p>In general you can monitor the probe's behavior by watching the log file it generates as well as the standard output it generates to the console. Here we document common errors with the probe.</p>
+<p> <pre><code class=bash>tail -f /mnt/probe/log/XXXX.log
+</code></pre></p>
+<div class="toc">
+<ul>
+<li><a href="#troubleshooting_overview">Troubleshooting Overview</a><ul>
+<li><a href="#launcher_hang">Launcher Hang</a></li>
+<li><a href="#cpu_compatibility">CPU Compatibility</a></li>
+<li><a href="#cgroup_error">CGroup Error</a></li>
+<li><a href="#privilege_error">Privilege Error</a></li>
+<li><a href="#illegal_instruction">Illegal Instruction</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="launcher_hang">Launcher Hang<a class="headerlink" href="#launcher_hang" title="Permanent link">&para;</a></h2>
+<p>In rare cases the probe will complete its successfully but the python launcher script will hang. If this happens, simply control-C the launcher if you are still attached to the terminal. Or use <code>ps -ef</code> to find the probe process and kill it.</p>
+<h2 id="cpu_compatibility">CPU Compatibility<a class="headerlink" href="#cpu_compatibility" title="Permanent link">&para;</a></h2>
+<p>Occasionally, the probe will launch and finish without scanning any files and may produce an error related to log files. When viewing logs you may see:</p>
+<p> <pre><code class=bash>probe terminated by signal: SIGILL
+</code></pre></p>
+<p>Check the CPU Compatibility:</p>
+<p> <pre><code class=bash>cat /sys/devices/cpu/caps/pmu_name
+</code></pre></p>
+<p>Review the CPU <a href="../prerequisites/index.html">Requirements</a>.</p>
+<h2 id="cgroup_error">CGroup Error<a class="headerlink" href="#cgroup_error" title="Permanent link">&para;</a></h2>
+<p>You may get the following error on older Linux builds:</p>
+<p> <pre><code class=text>Loading docker image
+Starting probe docker container
+783735ffbf1a722ebbcd43622476ea2364a8873dc2a6f95a4d006778636ed513
+/usr/bin/docker-current: Error response from daemon: oci runtime error: container_linux.go:235: starting container process caused &quot;process_linux.go:258: applying cgroup configuration for process caused \&quot;Cannot set property TasksAccounting, or unknown property.\&quot;&quot;.
+Failed starting the probe
+</code></pre></p>
+<p>If you do you need to update the systemd related packages. Here are the versions we use:</p>
+<p> <pre><code class=bash>rpm -qa |grep -i systemd
+systemd-libs-219-67.el7_7.2.x86_64
+systemd-sysv-219-67.el7_7.2.x86_64
+systemd-219-67.el7_7.2.x86_64
+oci-systemd-hook-0.2.0-1.git05e6923.el7_6.x86_64
+</code></pre></p>
+<h2 id="privilege_error">Privilege Error<a class="headerlink" href="#privilege_error" title="Permanent link">&para;</a></h2>
+<p>When the container is launched it may fail with this error message:</p>
+<p> <pre><code class=text>Starting probe docker container
+
+docker: Error response from daemon: privileged mode is incompatible with user namespaces.  You must run the container in the host namespace when running privileged mode.
+</code></pre></p>
+<p>This message is a warning that your docker environment will not allow docker to run with heightened permissions. This probably caused by a more secure docker configuration, such as placing the following text into the <code>/etc/docker/daemon.json</code> file which basically prevents a container from running as root with privileges:</p>
+<p> <pre><code class=text>{
+ &quot;userns-remap&quot;: &quot;dockremap:dockremap&quot;
+}
+</code></pre></p>
+<p>The easiest way to address that is to hand edit the VAST provided probe_launcher.py and look for the 'docker run' line. It will look something like this:</p>
+<p> <pre><code class=bash>cmd = f'docker run --privileged -v {args.metadata_dir}:/probe_mnt/{args.metadata_dir} -v {args.output_dir}:/probe_mnt/{args.output_dir} '
+</code></pre></p>
+<p>Notice the <code>--privileged</code>. Remove it, save the file, and try again. If that doesn't fix the issue, we've found that removing the <code>userns-remap</code> line and restarting the docker service can be more effective.</p>
+<h2 id="illegal_instruction">Illegal Instruction<a class="headerlink" href="#illegal_instruction" title="Permanent link">&para;</a></h2>
+<p>If the probe fails with a core dump and it shows an illegal instruction, you may be using an old CPU type which is not compatible with our compiled code. We require Intel Broadwell or newer compatible CPUs.</p>
+<p>If you use GDB to debug the core you can confirm by looking for something like this:</p>
+<p> <pre><code class=text>GDB output from core:
+$ gdb -c core.97296 
+
+
+For help, type &quot;help&quot;.
+Type &quot;apropos word&quot; to search for commands related to &quot;word&quot;.
+Core was generated by `/vast/install/probe/sim_estimator --similarity-function fast_hash_8 --split-win'.
+Program terminated with signal SIGILL, Illegal instruction.
+#0  0x00007fffec9deea7 in ?? ()
+(gdb) 
+</code></pre></p>
+              
+            </div>
+          </div>
+
+<footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../manual/index.html" class="btn btn-neutral float-right" title="Manual Deployment">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../output/index.html" class="btn btn-neutral" title="Understanding Output"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright 2023 Hewlett Packard Enterprise Development LP</p>
+    
+  </div>
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../output/index.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../manual/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

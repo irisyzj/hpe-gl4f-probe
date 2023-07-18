@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Hewlett Packard Enterprise" /><link rel="canonical" href="https://irisyzj.github.io/hpe-gl4f-probe.github.io/faq/index.html" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <meta property="og:title" content="HPE GreenLake for File Storage Data Reduction Estimation Probe"/>
+    <meta property="og:description" content="The HPE GreenLake for File Storage Data Reduction Estimation Probe provides estimated data reduction rate achieable based on an example data set."/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:url" content="https://irisyzj.github.io/hpe-gl4f-probe.github.io"/>
+    <meta property="og:type" content="website"/>
+    
+    <title>FAQ - HPE GreenLake for File Storage Data Reduction Estimation Probe</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../css/hpedev.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FAQ";
+        var mkdocs_page_input_path = "faq/index.md";
+        var mkdocs_page_url = "/hpe-gl4f-probe.github.io/faq/index.html";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> HPE GreenLake for File Storage Data Reduction Estimation Probe
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">GET STARTED</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../prerequisites/index.html">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deployment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../output/index.html">Understanding Output</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/index.html">Troubleshooting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../manual/index.html">Manual Deployment</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="index.html">FAQ</a>
+    <ul class="current">
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">LEGAL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../legal/eula/index.html">End User License Agreement</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../legal/notices/index.html">Notices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../legal/support/index.html">Support</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">HPE GreenLake for File Storage Data Reduction Estimation Probe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+          <li>GET STARTED &raquo;</li>
+      <li>FAQ</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/irisyzj/hpe-gl4f-probe.github.io/edit/master/docs/faq/index.md">Edit on irisyzj/hpe-gl4f-probe.github.io</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="general_faq">General FAQ<a class="headerlink" href="#general_faq" title="Permanent link">&para;</a></h1>
+<p><strong>Q: How does the probe handle symbolic links?</strong><br>
+<strong>A</strong>: The probe ignores symbolic links. Thus if it is scanning a directory tree and encounters a symbolic link to some other area in the file system, it will not follow it.</p>
+<p><strong>Q: How does the probe handle hard links?</strong><br>
+<strong>A</strong>: The probe attempts to detect if two files in the tree it is scanning point to the same data and automatically ignores the duplication.</p>
+<p><strong>Q: How does the probe handle sparse files?</strong><br>
+<strong>A</strong>: By default the probe is not aware of sparse files. This means that it will read zero values for the sparse regions of the files, which can result in artificially high data reduction. The probe reports zero chunks to hint at this potential issue. Refer to Understanding VAST Probe Output for more details. Note that the probe can be run to recognize sparse files on some files systems as described in the document just referenced.</p>
+<p><strong>Q: Can the probe scan multiple unrelated directory trees?</strong><br>
+<strong>A</strong>: Yes it can. This is done by providing multiple --input-dir values.</p>
+<h1 id="security_faq">Security FAQ<a class="headerlink" href="#security_faq" title="Permanent link">&para;</a></h1>
+<p>The HPE GreenLake for File Storage Data Reduction Estimation Probe software is provided at zero cost with zero warranty to HPE’s current and prospective customers in order to accurately estimate Data Reduction Rates of specific data not yet on HPE Storage systems. The probe software is run on physical or virtualized customer-maintained hardware and analyzes data that the customer allows access to through traditional filesystem based access. The results of the probe are used to determine a Data Reduction Rate which will often be used to project an aggregate financial savings for HPE’s current and prospective customers.</p>
+<p><strong>Q: Where does the VAST Probe originate?</strong><br>
+<strong>A:</strong> The HPE GreenLake for File Storage Data Reduction Estimation Probe is a Docker container of scripts and libraries maintained and assembled solely by HPE and VAST Data engineering which is updated frequently, usually quarterly. The links to download the probe are posted on this GitHub repository.</p>
+<p><strong>Q: Where does the VAST Probe run?</strong><br>
+<strong>A:</strong> The HPE GreenLake for File Storage Data Reduction Estimation Probe is designed to be run within a customer environment on physical or virtualized customer-maintained equipment. The provided container requires a base Linux operating system which is expected to be installed and updated by the customer before the probe is launched.</p>
+<p><strong>Q: What information does the VAST Probe collect?</strong><br>
+<strong>A:</strong> The HPE GreenLake for File Storage Data Reduction Estimation Probe generates a series of logs for each iteration of data scanning. These logs are by default saved on the same physical or virtualized customer-maintained equipment that the probe runs. These logs contain references to paths which have been provided as inputs, and can refer to any path within that directory structure when making declarative statements about data reduction results. The analysis log file that is generated upon completion of the Data Reduction Probe prints each full path with figures about data reduction rate for that path. In addition, a secondary section of same analysis log file prints aggregate information about specific file extensions with figures about data reduction rate for that file extension.</p>
+<p><strong>Q: What information does the HPE GreenLake for File Storage Data Reduction Estimation Probe send back to HPE?</strong><br>
+<strong>A:</strong> The HPE GreenLake for File Storage Data Reduction Estimation Probe as built-in call home telemetry which is on by default when executed assuming the probe has access to specific HPE endpoints via the internet. While the probe is running, telemetry logs will be sent approximately every 5 minutes. These telemetry logs, by default, omit references to full paths with the exception of the of the root input path and simply upload a percentage-based status of the probe as well as any error messages. The final telemetry log is similar to the local analysis log file but, by default, removes full paths with the exception of the of the root input path. The final telemetry log will send the aggregated data reduction rates based on file extensions as illustrated below:</p>
+<p> <pre><code class=text>file extension statistics:
+file type .xlsx, original_size=143.7GB, global_compression_reduced_size=126.6GB, global_compression_factor=1.14, dedup_percentage=10.34%, similarity_match_percentage=15.12%, similarity_gain=310.9MB, local_compression_only_size=126.9GB
+file type .tsv, original_size=291.5GB, global_compression_reduced_size=30.8GB, global_compression_factor=9.47, dedup_percentage=1.95%, similarity_match_percentage=84.83%, similarity_gain=9.6GB, local_compression_only_size=40.4GB
+</code></pre></p>
+<p><strong>Q: Who can access the logs sent to VAST Data?</strong><br>
+<strong>A:</strong> Anyone at HPE engineering or sales has access to the call home backend that is used as the telemetry destination for the HPE GreenLake for File Storage Data Reduction Estimation Probe.</p>
+<p><strong>Q: What actions are performed with the logs sent to HPE?</strong><br>
+<strong>A:</strong> The telemetry logs are primarily used by sales to determine a Data Reduction Rate which will often be used to project an aggregate financial savings for HPE’s current and prospective customers. Alternatively, any telemetry logs can be used to determine an expected Data Reduction Rate for a given industry or use case which may be similar to a sales team’s customer which has not run the probe. HPE engineering also uses the telemetry data for bug fixes and over all improvements to the software and user experience.</p>
+<p><strong>Q: How do I control what the VAST Probe sends back to VAST Data?</strong><br>
+<strong>A:</strong> This call home telemetry feature can be disabled at runtime with the added flag:</p>
+<p> <pre><code class=bash>--dont-send-logs
+</code></pre></p>
+<p>If you wish to send file names with the default telemetry logs, add the following flag:</p>
+<p> <pre><code class=bash>--send-logs-with-file-names
+</code></pre></p>
+              
+            </div>
+          </div>
+
+<footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../legal/eula/index.html" class="btn btn-neutral float-right" title="End User License Agreement">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../manual/index.html" class="btn btn-neutral" title="Manual Deployment"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright 2023 Hewlett Packard Enterprise Development LP</p>
+    
+  </div>
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../manual/index.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../legal/eula/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

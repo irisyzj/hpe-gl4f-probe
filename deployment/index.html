@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Hewlett Packard Enterprise" /><link rel="canonical" href="https://irisyzj.github.io/hpe-gl4f-probe.github.io/deployment/index.html" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <meta property="og:title" content="HPE GreenLake for File Storage Data Reduction Estimation Probe"/>
+    <meta property="og:description" content="The HPE GreenLake for File Storage Data Reduction Estimation Probe provides estimated data reduction rate achieable based on an example data set."/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:url" content="https://irisyzj.github.io/hpe-gl4f-probe.github.io"/>
+    <meta property="og:type" content="website"/>
+    
+    <title>Deployment - HPE GreenLake for File Storage Data Reduction Estimation Probe</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../css/hpedev.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Deployment";
+        var mkdocs_page_input_path = "deployment/index.md";
+        var mkdocs_page_url = "/hpe-gl4f-probe.github.io/deployment/index.html";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> HPE GreenLake for File Storage Data Reduction Estimation Probe
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">GET STARTED</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../prerequisites/index.html">Prerequisites</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="index.html">Deployment</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#download">Download</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#expand_verify_download">Expand &amp; Verify Download</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mount_filesystems_selected_to_be_probed">Mount Filesystems Selected to Be Probed</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#create_probe_directories">Create Probe Directories</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#size_of_the_data_set">Size of the Data Set</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#running_the_probe">Running The Probe</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#other_probe_flags">Other Probe Flags</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#understanding_the_results">Understanding the Results</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#re-running_the_probe">Re-Running The Probe</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../output/index.html">Understanding Output</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/index.html">Troubleshooting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../manual/index.html">Manual Deployment</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">LEGAL</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../legal/eula/index.html">End User License Agreement</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../legal/notices/index.html">Notices</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../legal/support/index.html">Support</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">HPE GreenLake for File Storage Data Reduction Estimation Probe</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+          <li>GET STARTED &raquo;</li>
+      <li>Deployment</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/irisyzj/hpe-gl4f-probe.github.io/edit/master/docs/deployment/index.md">Edit on irisyzj/hpe-gl4f-probe.github.io</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="deployment_overview">Deployment Overview<a class="headerlink" href="#deployment_overview" title="Permanent link">&para;</a></h1>
+<p>The HPE GreenLake for File Storage Data Reduction Estimation Probe provides estimated data reduction rate achieable based on an example data set.  Make sure to review the <a href="../prerequisites/index.html">prerequisites</a> to understand the hardware and software requirements to successfully run the probe.  This article will guide you through the process of deployment and execution of the probe.</p>
+<div class="toc">
+<ul>
+<li><a href="#deployment_overview">Deployment Overview</a><ul>
+<li><a href="#download">Download</a></li>
+<li><a href="#expand_verify_download">Expand &amp; Verify Download</a></li>
+<li><a href="#mount_filesystems_selected_to_be_probed">Mount Filesystems Selected to Be Probed</a></li>
+<li><a href="#create_probe_directories">Create Probe Directories</a></li>
+<li><a href="#size_of_the_data_set">Size of the Data Set</a></li>
+<li><a href="#running_the_probe">Running The Probe</a></li>
+<li><a href="#other_probe_flags">Other Probe Flags</a></li>
+<li><a href="#understanding_the_results">Understanding the Results</a></li>
+<li><a href="#re-running_the_probe">Re-Running The Probe</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="download">Download<a class="headerlink" href="#download" title="Permanent link">&para;</a></h2>
+<p>You can download the bundle from here: <a href="935553.probe.bundle.tar.gz">935553.probe.bundle.tar.gz</a> and <a href="https://linux.die.net/man/1/scp">scp</a> or <a href="https://linux.die.net/man/1/sftp">sftp</a> to the Linux client that you wish to run the probe.</p>
+<p>Or you may choose to use wget to download the bundle directly on the Linux client that you wish to run the probe:</p>
+<p> <pre><code class=bash>wget &quot;https://hpe-storage.github.io/gl4f-probe/deployment/935553.probe.bundle.tar.gz&quot; -O 935553.probe.bundle.tar.gz
+</code></pre></p>
+<h2 id="expand_verify_download">Expand &amp; Verify Download<a class="headerlink" href="#expand_verify_download" title="Permanent link">&para;</a></h2>
+<p>Now that you've downloaded the probe, you'll need to untar it and then verify the download is correct.</p>
+<p> <pre><code class=bash>export PROBE_BUILD=935553
+tar -xzf ${PROBE_BUILD}.probe.bundle.tar.gz
+ls -l
+</code></pre></p>
+<p>Note: example may not show current build numbers.</p>
+<p> <pre><code class=bash>[root@iris-centos-workloadclient-22 probe]# ls -l
+total 1840344
+-rw-r--r--. 1 root root 937920831 Jul 12 12:44 935553.probe.bundle.tar.gz
+-rw-r--r--. 1 root root 946565338 Jul 12 12:44 935553.probe.image.gz
+-rwxr-xr-x. 1 root root     19579 Jul 12 12:44 probe_launcher.py
+</code></pre></p>
+<!-- ![probe_ls](probe_ls.png) -->
+
+<h2 id="mount_filesystems_selected_to_be_probed">Mount Filesystems Selected to Be Probed<a class="headerlink" href="#mount_filesystems_selected_to_be_probed" title="Permanent link">&para;</a></h2>
+<p>Validated Filesystems Include, But Are Not Limited To:</p>
+<ul>
+<li>NFS</li>
+<li>Lustre</li>
+<li>GPFS</li>
+<li>S3 with <a href="https://github.com/kahing/goofys">goofys</a></li>
+<li>CIFS/SMB</li>
+</ul>
+<p>For the most accurate results, do not use root-squash.</p>
+<p>It's recommended to set read-only access on the mounted filesystem</p>
+<h2 id="create_probe_directories">Create Probe Directories<a class="headerlink" href="#create_probe_directories" title="Permanent link">&para;</a></h2>
+<p>Change /mnt/ to the SSD-backed local disk to be used by the probe for the hash database and logging directories</p>
+<p> <pre><code class=bash>sudo mkdir -p /mnt/probe/db
+sudo mkdir -p /mnt/probe/out
+sudo chmod -Rf 777 /mnt/probe
+</code></pre></p>
+<h2 id="size_of_the_data_set">Size of the Data Set<a class="headerlink" href="#size_of_the_data_set" title="Permanent link">&para;</a></h2>
+<ul>
+<li>The input to the probe is a defined directory (<code>--input-dir</code>)</li>
+<li>The probe will automatically query the input filesystem about space consumed and file count (inodes) and use that in its calculations</li>
+<li>Depending on the method of mounting and underlying storage, this can often provide an inaccurate query response </li>
+<li>It's highly recommended that manual estimated entries be defined for space consumed (<code>--data-size-gb</code>) and file count (<code>--number-of-files</code>) </li>
+<li>These estimates do not have to be accurate, round up reasonably</li>
+</ul>
+<h2 id="running_the_probe">Running The Probe<a class="headerlink" href="#running_the_probe" title="Permanent link">&para;</a></h2>
+<p>The probe runs as a foreground application. This means that if your session is closed for whatever reason, the probe will stop. It's recommended running the probe as a <a href="https://linux.die.net/man/1/screen">screen</a> session.</p>
+<p>Here is an example of a command line. Edit the bold variables for the environment:</p>
+<p>NOTE: Use underscores instead of spaces in <code>COMPANY_NAME</code> and <code>WORKLOAD</code></p>
+<p> <pre><code class=bash>export DB_DIR=/mnt/probe/db
+export OUTPUT_DIR=/mnt/probe/out
+export INPUT_DIR=/mnt/filesystem_to_be_probed/sub_directory
+export INPUT_SIZE_GB=10000
+export QTY_FILES=1000000
+export COMPANY_NAME=Your_Amazing_Company
+export WORKLOAD=Describe_Your_Workload
+</code></pre></p>
+<p>Start the probe: (This may take up to five minutes to start displaying output)</p>
+<p> <pre><code class=bash>sudo python3 ./probe_launcher.py \
+--probe-image-path ${PROBE_BUILD}.probe.image.gz \
+--input-dir $INPUT_DIR \
+--metadata-dir $DB_DIR \
+--output-dir $OUTPUT_DIR \
+--data-size-gb $INPUT_SIZE_GB \
+--number-of-files $QTY_FILES \
+--customer-name ${COMPANY_NAME}---${WORKLOAD}
+</code></pre></p>
+<p><strong> Example One: Small Data Sets </strong>
+To probe the directory interesting_data of 15 TB in-use and 5,000,000 files at the company ACME, the command would be:</p>
+<p> <pre><code class=bash>sudo python3 ./probe_launcher.py \
+--probe-image-path ${PROBE_BUILD}.probe.image.gz \
+--input-dir /mnt/acme_filer/interesting_data \
+--metadata-dir /mnt/data/probe/db \
+--output-dir /mnt/data/probe/out \
+--data-size-gb 15000 \
+--number-of-files 5000000 \
+--customer-name ACME---Interesting_Data
+</code></pre></p>
+<p><strong> Example Two: Larger Data Sets </strong>
+To probe the directory fascinating_data of 60 TB in-use and 750,000,000 files at the company FOO, and are using defined parameters for RAM and SSD-backed local disk the command would be:</p>
+<p> <pre><code class=bash>sudo python3 ./probe_launcher.py \
+--probe-image-path ${PROBE_BUILD}.probe.image.gz \
+--input-dir /mnt/foo_filer/fascinating_data \
+--metadata-dir /mnt/data/probe/db \
+--output-dir /mnt/data/probe/out \
+--data-size-gb 60000 \
+--number-of-files 750000000 \
+--customer-name FOO---Facinating_Data
+</code></pre></p>
+<p><strong> Example Three: Performance Throttling </strong>
+To probe the directory riviting_data of 250 TB in-use and 1,250,000,000 files at the company Initech, using defined parameters for RAM and SSD-backed local disk, but wish to have a lower performance impact on the filesystem, the command would be:</p>
+<p> <pre><code class=bash>sudo python3 ./probe_launcher.py \
+--probe-image-path ${PROBE_BUILD}.probe.image.gz \
+--input-dir /mnt/initech_filer/riviting_data \
+--metadata-dir /mnt/data/probe/db \
+--output-dir /mnt/data/probe/out \
+--data-size-gb 250000 \
+--number-of-files 1250000000 \
+--number-of-threads 4
+--customer-name Initech---Riviting_Data
+</code></pre></p>
+<p>Note the <code>--number-of-threads</code> flag. By default the probe will use all CPU cores in the system but this can be used to throttle performance and reduce potential impact of the scanned filesystem.</p>
+<h2 id="other_probe_flags">Other Probe Flags<a class="headerlink" href="#other_probe_flags" title="Permanent link">&para;</a></h2>
+<p>While the probe is running and after completion, telemetry logs are automatically uploaded to HPE. To prevent this, add the following flag:</p>
+<p> <pre><code class=bash>--dont-send-logs \
+</code></pre></p>
+<p>If you wish to send file names with the default telemetry logs, add the following flag:</p>
+<p> <pre><code class=bash>--send-logs-with-file-names \
+</code></pre></p>
+<p>Probing filesystems which contain snapshots can often cause recursion issues and inaccurate results. As a result the probe automatically ignores directories named .snapshot. If your file system uses another convention, use the <code>--regexp-filter</code> command. If for some reason you want the probe to read the .snapshot directories, specify false rather than true for <code>--filter-snapshots</code>.</p>
+<p> <pre><code class=bash>--filter-snapshots \    (this is the default)
+</code></pre></p>
+<p>Under most circumstances the probe should be run with adaptive chunking. However you can disable that feature by specifying this flag:</p>
+<p> <pre><code class=bash>--disable-adaptive-chunking \
+</code></pre></p>
+<h2 id="understanding_the_results">Understanding the Results<a class="headerlink" href="#understanding_the_results" title="Permanent link">&para;</a></h2>
+<p>Once started, the probe will display the current projection of potential data reduction. Once completed, the probe will display output and is further described in <a href="../output/index.html">Understanding Output</a></p>
+<h2 id="re-running_the_probe">Re-Running The Probe<a class="headerlink" href="#re-running_the_probe" title="Permanent link">&para;</a></h2>
+<p>The hash database must be empty before running the probe again:</p>
+<p> <pre><code class=bash>sudo rm -r /mnt/probe/db/*
+</code></pre></p>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<p>Refer to the <a href="../troubleshooting/index.html">Troubleshooting</a> document and contact HPE Support.</p>
+<!-- 
+# TODO: delete 
+
+Americas:
+
+
+
+
+ <pre><code class=markdown>wget &quot;https://vastdatasupport.blob.core.windows.net/probe/935553.probe.bundle.tar.gz?sp=r&amp;st=2023-04-20T12:46:21Z&amp;se=2023-07-31T20:46:21Z&amp;spr=https&amp;sv=2021-12-02&amp;sr=b&amp;sig=r%2B0sacAOQ68zqS0rtXhrC9XeHK5pC08m3ImkMUE6aac%3D&quot; -O 935553.probe.bundle.tar.gz
+</code></pre>
+
+Europe:
+
+
+
+
+
+ <pre><code class=markdown>wget &quot;https://vastdatasupporteuwest.blob.core.windows.net/probe/935553.probe.bundle.tar.gz?sp=r&amp;st=2023-04-24T15:46:51Z&amp;se=2026-04-24T23:46:51Z&amp;spr=https&amp;sv=2021-12-02&amp;sr=b&amp;sig=Nska0jbs3Fz%2BrX7IavgLBq8lZeoLyo3n2sQ%2Bz3CrdOM%3D&quot; -O 935553.probe.bundle.tar.gz
+</code></pre>
+
+Asia/Pacific:
+
+
+
+
+
+ <pre><code class=markdown>wget &quot;https://vastsupportjapanwest.blob.core.windows.net/probe/935553.probe.bundle.tar.gz?sp=r&amp;st=2023-04-24T15:47:22Z&amp;se=2026-04-24T23:47:22Z&amp;spr=https&amp;sv=2021-12-02&amp;sr=b&amp;sig=EURsk5b4LHKM%2Bk32qyVMiab%2FZXnfIodpDiTCm5wB%2F1w%3D&quot; -O 935553.probe.bundle.tar.gz 
+</code></pre>
+
+South Africa:
+
+
+
+
+
+
+ <pre><code class=markdown>wget &quot;https://vastsupportsanorth.blob.core.windows.net/probe/935553.probe.bun
+</code></pre>
+
+The address and credentials of the target storage system must be specified in a configuration file, using the format shown in this example `storage-system.yaml` file.
+
+
+
+
+
+ <pre><code class=markdown>address: 10.10.10.1
+username: exampleuser
+password: examplepassword
+</code></pre>
+
+The `address` value is either a resolvable hostname or IP address of the management interface on the storage system. The `username` value identifies a storage system user with privileges described below.
+
+| Storage System                               | User Type   | Minimal Role   |
+| :------------------------------------------- | :---------- | :------------- |
+| HPE Alletra 9000, Primera, 3PAR              | System User | Browse         |
+| HPE Alletra 6000, Nimble Storage             | System User | Guest          |
+| HPE Alletra 6000, Nimble Storage<sup>1</sup> | Tenant      | N/A            |
+
+<sup>1</sup> = NimbleOS 6.0 and above only.
+
+# Command Options
+
+| Option | Default | Description |
+| :--- | :--- | :--- |
+| --accept-eula | false | Confirms your acceptance of the [HPE license restrictions](../legal/eula/index.md) |
+| --log.path | *None* | A file location to write log messages, in addition to stdout |
+| --metrics.disable-introspection | false | Excludes metrics about the metrics provider itself, with prefixes such as `promhttp`, `process`, and `go` |
+| --telemetry.addr | :8080 | The host:port address at which to provide metrics |
+| --telemetry.path | /metrics | The endpoint path at which to provide metrics |
+
+# Using an Executable File
+
+A Linux executable file is provided through GitHub [releases](https://github.com/hpe-storage/array-exporter/releases).
+
+When an executable file has been copied to your server, it can be invoked with this command syntax:
+
+
+
+
+
+ <pre><code class=markdown>hpe-array-exporter [OPTION]... CONFIG-PATH
+</code></pre>
+
+Available OPTIONs are described in the [Command Options](#command_options) section.
+
+CONFIG-PATH is the location of the storage system [configuration](#configuration) file.
+
+## Command Example
+
+
+
+
+
+ <pre><code class=markdown>./hpe-array-exporter --log.path=/var/log/hpe-array-exporter.log /etc/config/storage-system.yaml
+</code></pre>
+
+!!! important
+    Include the `--accept-eula` option or set the environment variable `ACCEPT_HPE_STANDARD_EULA=yes` to confirm your acceptance of the [HPE license restrictions](../legal/eula/index.md).
+
+
+# Using a Container Image
+
+A container image is hosted at `quay.io/hpestorage/array-exporter:v1.0.0`, with v1.0.0 replaced by the desired release version.
+
+When deploying the array exporter as a container, the configuration file must be mounted as a volume.
+
+Available options, including the `--log.path` used in the example below, are described in the [Command Options](#command_options) section.
+
+## Docker Example
+
+In this example, the configuration file at `/tmp/storage-system.yaml` is bound to the container's `/etc/config/` directory as a volume using Docker's `-v` command option. The configuration file location inside the container is then given as a command argument. In addition, the `-p` option is used to map the container's port 8080 to port 9090 on the Docker host.
+
+
+
+
+
+ <pre><code class=markdown>docker run -it --name hpe-array-exporter -p 9090:8080 \
+     -v /tmp/storage-system.yaml:/etc/config/storage-system.yaml \
+     quay.io/hpestorage/array-exporter:v1.0.0 \
+     --log.path /var/log/hpe-array-exporter.log \
+     /etc/config/storage-system.yaml
+</code></pre>
+
+!!! important
+    Include the `--accept-eula` option or set the environment variable `ACCEPT_HPE_STANDARD_EULA=yes` to confirm your acceptance of the [HPE license restrictions](/legal/eula/index.html).
+
+Consult the [Docker command line documentation](https://docs.docker.com/engine/reference/commandline/run/) for more information on running containers using Docker.
+
+# Using a Kubernetes Deployment
+
+Kubernetes deployment facilities are hosted in the [co-deployments repository](https://github.com/hpe-storage/co-deployments), including a [Helm chart](https://artifacthub.io/packages/helm/hpe-storage/hpe-array-exporter/) (via Artifact Hub) and sample [YAML files](https://github.com/hpe-storage/co-deployments/tree/master/yaml/array-exporter).
+ -->
+              
+            </div>
+          </div>
+
+<footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../output/index.html" class="btn btn-neutral float-right" title="Understanding Output">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../prerequisites/index.html" class="btn btn-neutral" title="Prerequisites"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright 2023 Hewlett Packard Enterprise Development LP</p>
+    
+  </div>
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../prerequisites/index.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../output/index.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
