@@ -1,12 +1,12 @@
 site_name: HPE GreenLake for File Storage Data Reduction Estimation Probe
 site_description: Reference documentation for the HPE GreenLake for File Storage Data Reduction Estimation Probe
-site_url: https://hpe-storage.github.io/gl4f-probe
+site_url: https://irisyzj.github.io/hpe-gl4f-probe.github.io
 site_author: Hewlett Packard Enterprise
 theme:
   name: readthedocs
   custom_dir: hpe_theme/
-repo_name: 'hpe-storage/gl4f-probe'
-repo_url: 'https://github.com/hpe-storage/gl4f-probe'
+repo_name: 'irisyzj/hpe-gl4f-probe.github.io'
+repo_url: 'https://github.com/irisyzj/hpe-gl4f-probe.github.io'
 copyright: "Copyright 2023 Hewlett Packard Enterprise Development LP"
 extra_css:
   - css/hpedev.css
