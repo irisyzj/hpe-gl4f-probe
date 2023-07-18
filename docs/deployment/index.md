@@ -22,9 +22,17 @@ export PROBE_BUILD=935553
 tar -xzf ${PROBE_BUILD}.probe.bundle.tar.gz
 ls -l
 ```
-Note: image may not show current build numbers.
+Note: example may not show current build numbers.
 
-![probe_ls](probe_ls.png)
+```bash
+[root@iris-centos-workloadclient-22 probe]# ls -l
+total 1840344
+-rw-r--r--. 1 root root 937920831 Jul 12 12:44 935553.probe.bundle.tar.gz
+-rw-r--r--. 1 root root 946565338 Jul 12 12:44 935553.probe.image.gz
+-rwxr-xr-x. 1 root root     19579 Jul 12 12:44 probe_launcher.py
+```
+
+<!-- ![probe_ls](probe_ls.png) -->
 
 ## Mount Filesystems Selected to Be Probed
 Validated Filesystems Include, But Are Not Limited To:
