@@ -1,23 +1,12 @@
-# HPE Storage Array Exporter for Prometheus
+# HPE GreenLake for File Storage Data Reduction Estimation Probe
 
-The HPE Storage Array Exporter for Prometheus provides observability for an HPE storage system via the [Prometheus](https://prometheus.io/) metric format.
+The HPE GreenLake for File Storage Data Reduction Estimation Probe provides estimated data reduction rate achieable based on an example data set.
 
 # Synopsis
 
-This documentation shows how to [deploy](deployment/index.md) the exporter, the [metrics](metrics/index.md) it provides, and how to [integrate it with Prometheus](integration/index.md).
+This documentation shows how to [check the prerequisites](prerequisites/index.md), [deploy](deployment/index.md) the probe, and [understand the output](output/index.md).
 
-# Compatibility
-
-HPE Storage Array Exporter for Prometheus is compatible with these storage arrays:
-
-* HPE Alletra 9000
-* HPE Alletra 6000
-* HPE Nimble Storage
-* HPE Primera
-* HPE 3PAR
-
-See the [compatibility chart](releases/index.md) for specific versions and releases.
 
 # Support
 
-The HPE Storage Array Exporter for Prometheus is supported by HPE when used with HPE storage arrays on valid support contracts. Send email to [support@nimblestorage.com](mailto:support@nimblestorage.com) to get started with any issue that requires assistance. Engage your HPE representative for other means to contact HPE Storage support directly.
+The HPE GreenLake for File Storage Data Reduction Estimation Probe is supported by HPE when used with HPE storage arrays on valid support contracts. Send email to [gl4fprobe@hpe.com](mailto:gl4fprobe@hpe.com) to get started with any issue that requires assistance. Engage your HPE representative for other means to contact HPE Storage support directly.
